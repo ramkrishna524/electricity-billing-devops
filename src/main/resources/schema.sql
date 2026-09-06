@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS users (
+    service_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    mobile_number VARCHAR(15) NOT NULL UNIQUE,
+    usage_type VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS bills (
+    bill_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    service_id BIGINT NOT NULL,
+    units_used INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    billing_period VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (service_id) REFERENCES users(service_id)
+);
