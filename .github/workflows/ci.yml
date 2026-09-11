@@ -9,29 +9,20 @@ on:
     branches:
       - main
 
-
 jobs:
-	
   build-and-test:
-	
     runs-on: ubuntu-latest
-	
-    steps:
 
+    steps:
       - name: checkout code
         uses: actions/checkout@v4
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: 'maven'
-		
+          java-version: "17"
+          distribution: "temurin"
+          cache: "maven"
+
       - name: Build and Test
-        uses: ./mvnw clean test	
-	  
-		
-		
-	 
-	 
+        run: ./mvnw clean test
