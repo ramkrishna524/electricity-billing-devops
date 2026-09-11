@@ -12,18 +12,15 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-	
+
     services:
       mysql:
         image: mysql:8.0
-
         env:
           MYSQL_DATABASE: electricity_billing
           MYSQL_ROOT_PASSWORD: root
-
         ports:
           - 3306:3306
-
         options: >-
           --health-cmd="mysqladmin ping -h localhost -uroot -proot"
           --health-interval=10s
@@ -31,7 +28,7 @@ jobs:
           --health-retries=5
 
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Java 17
@@ -42,4 +39,10 @@ jobs:
           cache: "maven"
 
       - name: Build and Test
-        run: ./mvnw clean test
+        run: ./mvnw clean verify
+        env:
+          DB_HOST: localhost
+          DB_PORT: 3306
+          DB_NAME: electricity_billing
+          DB_USER: root
+          DB_PASSWORD: root
