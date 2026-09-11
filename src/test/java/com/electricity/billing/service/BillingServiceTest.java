@@ -3,10 +3,12 @@ package com.electricity.billing.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import com.electricity.billing.model.UsageType;
 
+@Tag("unit")
 public class BillingServiceTest {
 	
     @Test
