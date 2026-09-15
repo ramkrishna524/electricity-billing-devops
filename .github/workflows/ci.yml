@@ -38,15 +38,13 @@ jobs:
 
         options: >-
 
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-cmd="mysqladmin ping -h localhost -uroot -proot"
 
           --health-interval=10s
 
           --health-timeout=5s
 
-          --health-retries=10
-
-          --health-start-period=60s
+          --health-retries=5
 
     permissions:
 
@@ -70,7 +68,7 @@ jobs:
 
           distribution: "temurin"
 
-          cache: "maven"
+          cache: maven
 
       - name: Build and Test
 
