@@ -1,6 +1,6 @@
 services:
   app:
-    image: electricity-billing:1.0
+    image: 441356678868.dkr.ecr.ap-south-1.amazonaws.com/electricity-billing:${IMAGE_TAG}
     ports:
       - "8081:8081"
     environment:
