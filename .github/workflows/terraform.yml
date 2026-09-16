@@ -37,6 +37,9 @@ jobs:
           role-to-assume: arn:aws:iam::441356678868:role/GitHubActions-ElectricityBilling-ECR
           aws-region: ap-south-1
 
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
       - name: Terraform Init
         working-directory: .
         run: terraform init
